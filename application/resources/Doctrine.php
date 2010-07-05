@@ -57,7 +57,6 @@ class Application_Resource_Doctrine extends Zend_Application_Resource_ResourceAb
         if ($bootstrap->hasResource('modules')) {
             $bootstrap->bootstrap('modules');
             $modules = $bootstrap->getResource('modules');
-            
             foreach($modules as $module) {
                 $modulePaths[] = $module->getResourceLoader()->getBasePath() .
                                  $this->_metaConfig['mappingsDir'];
@@ -80,7 +79,7 @@ class Application_Resource_Doctrine extends Zend_Application_Resource_ResourceAb
                     $driver = new driver\PhpDriver($defaultPath);
                     break;
                 case 'xml':
-                    $driver = new driver\XmlDriver($defaultPath);
+                    $driver = new Sandbox\Driver\XmlDriver($defaultPath);
                     break;
                 case 'yaml':
                     $driver = new driver\YamlDriver($defaultPath);

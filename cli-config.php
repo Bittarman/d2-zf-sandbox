@@ -11,7 +11,7 @@ $application = new Zend_Application(
         APPLICATION_ENV,
         APPLICATION_PATH . '/configs/application.ini'
     );
-$dc = $application->bootstrap('doctrine')->getBootstrap()->getResource('Doctrine');
+$dc = $application->bootstrap(array('modules','doctrine'))->getBootstrap()->getResource('Doctrine');
 $em = $dc->getEntityManager();
 $helperSet = new \Symfony\Components\Console\Helper\HelperSet(array(
     'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($em->getConnection()),
