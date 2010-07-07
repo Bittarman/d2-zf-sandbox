@@ -59,7 +59,7 @@ class Application_Resource_Doctrine extends Zend_Application_Resource_ResourceAb
             $modules = $bootstrap->getResource('modules');
             foreach($modules as $module) {
                 $modulePaths[] = $module->getResourceLoader()->getBasePath() .
-                                 $this->_metaConfig['mappingsDir'];
+                                 $this->_metaConfig['mappingDirName'];
             }
             $this->getDriver()->addPaths($modulePaths);
         }   
@@ -73,7 +73,7 @@ class Application_Resource_Doctrine extends Zend_Application_Resource_ResourceAb
     public function getDriver()
     {
         if (null === $this->_driver) {
-            $defaultPath = APPLICATION_PATH . $this->_metaConfig['mappingsDir'];
+            $defaultPath = APPLICATION_PATH . $this->_metaConfig['mappingDirName'];
             switch ($this->_metaConfig['driver']) {
                 case 'php':
                     $driver = new driver\PhpDriver($defaultPath);
